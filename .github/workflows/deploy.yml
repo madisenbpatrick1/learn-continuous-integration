@@ -20,11 +20,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install ts-node Globally
-        run: npm install -g ts-node typescript
+      - name: Remove sample data database
+        run: npm run remove-sample-data -- "mongodb://127.0.0.1:27017/my_library_db"
 
-      - name: Run remove_db.ts Script
-        run: ts-node remove_db.ts
-
-      - name: Run insert_sample_db.ts Script
-        run: ts-node insert_sample_db.ts
+      - name: add sample data
+        run: npm run insert-sample-data -- "mongodb://127.0.0.1:27017/my_library_db"
