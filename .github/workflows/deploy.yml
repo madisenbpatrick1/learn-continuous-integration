@@ -16,7 +16,7 @@ jobs:
         run: npm install
 
       - name: Delete old database
-        run: ts-node remove_db.ts -- "mongodb://127.0.0.1:27017/my_library_db"
+        run: npx ts-node remove_db.ts "mongodb://127.0.0.1:27017/my_library_db"
 
       - name: add database
-        run: ts-node insert_sample_db.ts -- "mongodb://127.0.0.1:27017/my_library_db"
+        run: npx ts-node insert_sample_db.ts "mongodb://127.0.0.1:27017/my_library_db"
