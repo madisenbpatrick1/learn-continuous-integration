@@ -12,16 +12,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: "14"
-
       - name: Install Dependencies
         run: npm install
 
-      - name: Remove sample data database
-        run: npm run remove-sample-data -- "mongodb://127.0.0.1:27017/my_library_db"
+      - name: Delete old database
+        run: ts-node remove_db.ts -- "mongodb://127.0.0.1:27017/my_library_db"
 
-      - name: add sample data
-        run: npm run insert-sample-data -- "mongodb://127.0.0.1:27017/my_library_db"
+      - name: add database
+        run: ts-node insert_sample_db.ts -- "mongodb://127.0.0.1:27017/my_library_db"
